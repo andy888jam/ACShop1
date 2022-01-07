@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>alpha-shop</title>
+  <link rel="stylesheet" href="dist/main.css">
+  <script src="https://kit.fontawesome.com/6f8b7eac3f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="main-app">
+    <header class="container header">
+      <input type="checkbox" class="navbar-toggle" id="navbar-toggle" />
+      <nav class="header__nav">
+        <a href="#" class="header__nav__item">男裝</a>
+        <a href="#" class="header__nav__item">女裝</a>
+        <a href="#" class="header__nav__item">客製消息</a>
+        <a href="#" class="header__nav__item">聯絡我們</a>
+        <div class="header__nav__item">
+          <a href="#" class="header__nav__item__search"><i class="fas fa-search"></i></a>
+          <a href="#" class="header__nav__item__cart"><i class="fas fa-shopping-cart"></i></a>
+          <a href="#" class="header__nav__item__moon"><i class="far fa-moon"></i></a>
+        </div>
+      </nav>
+      <div class="header__logo-wrapper">
+        <a href="#" class="header__logo-link">
+          <img src="image/Logo@2x.png" alt="" class="header__logo">
+        </a>
+      </div>
+      
+      <label class="navbar-toggle-label" for="navbar-toggle">
+        <span class="hamburger"></span>
+      </label>
+    </header>
+
+    <section class="container main">
+      <div class="main__left-content">
+        <h3 class="main__left-content__check">結帳</h3>
+        <div class="main__left-content__stepper-panel">
+          <div class="stepper-wrapper">
+            <div class="step">
+              <div class="step-circle active"></div>
+              <div class="label-container">寄送地址</div>
+            </div>
+            <div class="step">
+              <div class="step-circle"></div>
+              <span class="connect-line"></span>
+              <div class="label-container">運送方式</div>
+            </div>
+            <div class="step">
+              <div class="step-circle"></div>
+              <span class="connect-line"></span>
+              <div class="label-container">付款資訊</div>
+            </div>
+          </div>
+        </div>
+        <h4 class="main__left-content__title">寄送地址</h4>
+        <div class="main__left-content__form">電話...</div>
+        <div class="main__left-content__button">
+          <button>下一步</button>
+        </div>
+      </div>
+      <div class="main__right-content">
+        <div class="main__right-content__cart">
+          <h5 class="main__right-content__cart__title">購物籃</h5>
+          <div class="main__right-content__cart__items"></div>
+          <div class="main__right-content__fee"></div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container footer__wrapper">
+        <img src="" alt="" class="footer__wrapper__logo">
+        <div class="footer__wrapper__more-info"></div>
+        <div class="footer__wrapper__contact"></div>
+      </div>
+    </footer>
+  </div>
+  <script src="dist/bundle.js"></script>
+</body>
+
+</html>
