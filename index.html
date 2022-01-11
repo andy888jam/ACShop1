@@ -12,34 +12,40 @@
 
 <body>
   <div id="main-app">
+    <!-- header section -->
     <header class="container header">
       <input type="checkbox" class="navbar-toggle" id="navbar-toggle" />
+      <!-- nav part -->
       <nav class="header__nav">
         <a href="#" class="header__nav__item">男裝</a>
         <a href="#" class="header__nav__item">女裝</a>
         <a href="#" class="header__nav__item">客製消息</a>
         <a href="#" class="header__nav__item">聯絡我們</a>
+        <!-- icon part -->
         <div class="header__nav__item">
           <a href="#" class="header__nav__item__search"><i class="fas fa-search"></i></a>
           <a href="#" class="header__nav__item__cart"><i class="fas fa-shopping-cart"></i></a>
           <a href="#" class="header__nav__item__moon"><i class="far fa-moon"></i></a>
         </div>
       </nav>
+      <!-- logo part -->
       <div class="header__logo-wrapper">
         <a href="#" class="header__logo-link">
           <img src="image/Logo@2x.png" alt="" class="header__logo">
         </a>
       </div>
-      
+      <!-- hamburger part -->
       <label class="navbar-toggle-label" for="navbar-toggle">
         <span class="hamburger"></span>
       </label>
     </header>
-
+    <!-- main section -->
     <section class="container main">
+      <!-- form part -->
       <div class="main__left-content">
         <h3 class="main__left-content__check">結帳</h3>
         <div class="main__left-content__stepper-panel">
+          <!-- stepper -->
           <div class="stepper-wrapper">
             <div class="step">
               <div class="step-circle active"></div>
@@ -57,28 +63,162 @@
             </div>
           </div>
         </div>
-        <h4 class="main__left-content__title">寄送地址</h4>
-        <div class="main__left-content__form">電話...</div>
-        <div class="main__left-content__button">
-          <button>下一步</button>
+        <!-- form -->
+        <div class="form">
+          <!-- first page -->
+          <div class="part">
+            <!-- step title -->
+            <div class="form__movement-title">
+              <h4 class="form__movement-title-text">寄送地址</h4>
+            </div>
+            <!-- form content -->
+            <div class="form__info">
+              <div class="form-row form__info__title">
+                <label for="">稱謂</label>
+                <div class="select-wrapper">
+                  <select name="title" required>
+                    <option value="sir" selected>先生</option>
+                    <option value="miss">小姐</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row form__info__name">
+                <label for="">姓名</label><input id="name" type="text" placeholder="請輸入姓名" required>
+              </div>
+              <div class="form-row form__info__telephone">
+                <label for="">電話</label><input id="telephone" type="text" placeholder="請輸入行動電話" required>
+              </div>
+              <div class="form-row form__info__email">
+                <label for="">Email</label><input id="email" type="text" placeholder="請輸入電子郵件" required>
+              </div>
+              <div class="form-row form__info__city">
+                <label for="">縣市</label>
+                <div class="select-wrapper">
+                  <select name="city" id="" required>
+                    <option value="" selected>請選擇縣市</option>
+                    <option value="taipei">台北</option>
+                    <option value="taichung">台中</option>
+                    <option value="kaohsiung">高雄</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row form__info__address">
+                <label for="">地址</label><input id="addess" type="text" placeholder="請輸入地址" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- second page -->
+        <div class="part">
+          <!-- step title -->
+          <div class="form__movement-title">
+            <h4 class="form__movement-title-text">運送方式</h4>
+          </div>
+          <!-- form content -->
+          <div class="form__transport">
+            <div class="form__transport-standard">
+              <input name="transport" type="radio" value="standard" checked>
+              <label for="">
+                <p class="transport-way">標準運送<br><span>約3~7個工作天</span></p>
+              </label>
+              <p class="transport-price">免費</p>
+            </div>
+            <div class="form__transport-express">
+              <input name="transport" type="radio" value="express">
+              <label for="">
+                <p class="transport-way">DHL貨運<br><span>48小時內送達</span></p>
+              </label>
+              <p class="transport-price">$500</p>
+            </div>
+          </div>
+        </div>
+        <!-- third page -->
+        <div class="part">
+          <!-- step title -->
+          <div class="form__movement-title">
+            <h4 class="form__movement-title-text">付款資訊</h4>
+          </div>
+          <!-- form content -->
+          <div class="form__payment">
+            <div class="form-row form__payment__holder">
+              <label for="">持卡人姓名</label><input id="card-holder" type="text" placeholder="John Doe">
+            </div>
+            <div class="form-row form__payment__card-number">
+              <label for="">卡號</label><input id="card-number" type="text" placeholder="1111 2222 3333 4444">
+            </div>
+            <div class="form-row form__payment__expire">
+              <label for="">有效期限</label><input id="expiration-date" type="text" placeholder="MM/YY">
+            </div>
+            <div class="form-row form__payment__cvc">
+              <label for="">CVC/CCV</label><input id="cvc" type="text" placeholder="123">
+            </div>
+          </div>
         </div>
       </div>
-      <div class="main__right-content">
-        <div class="main__right-content__cart">
-          <h5 class="main__right-content__cart__title">購物籃</h5>
-          <div class="main__right-content__cart__items"></div>
-          <div class="main__right-content__fee"></div>
-        </div>
-      </div>
-    </section>
-    <footer class="footer">
-      <div class="container footer__wrapper">
-        <img src="" alt="" class="footer__wrapper__logo">
-        <div class="footer__wrapper__more-info"></div>
-        <div class="footer__wrapper__contact"></div>
-      </div>
-    </footer>
   </div>
+  <!-- cart part -->
+  <div class=" container main__cart">
+    <div class="main__cart-title cellphone">
+      <h5 class="main__cart-title-text">購物籃</h5>
+    </div>
+    <!-- cart items -->
+    <div class="main__cart__items">
+      <!-- item -->
+      <div class="main__cart__items__item">
+        <div class="item-picture">
+          <img src="image/Block@2x.png" alt="">
+        </div>
+        <div class="item-detail">
+          <p class="item-name">破壞補丁修身牛仔褲</p>
+          <div class="numbers">
+            <button class="item-detail__numbers__minus">-</button>
+            <p class="item-detail__numbers__number">1</p>
+            <button class="item-detail__numbers__plus">+</button>
+          </div>
+          <div class="item-price">$3999</div>
+        </div>
+      </div>
+      <!-- item -->
+      <div class="main__cart__items__item">
+        <div class="item-picture">
+          <img src="image/Block2@2x.png" alt="">
+        </div>
+        <div class="item-detail">
+          <p class="item-name">刷色直筒牛仔褲</p>
+          <div class="numbers">
+            <button class="item-detail__numbers__minus">-</button>
+            <p class="item-detail__numbers__number">1</p>
+            <button class="item-detail__numbers__plus">+</button>
+          </div>
+          <div class="item-price">$1299</div>
+        </div>
+      </div>
+    </div>
+    <div class="main__cart__delivery">
+      <p>運費</p>
+      <p>免費</p>
+    </div>
+    <div class="main__cart__total">
+      <p>小計</p>
+      <p>＄5298</p>
+    </div>
+  </div>
+  <!-- button part -->
+  <div class="container main__button">
+    <button class="d-none">上一步</button>
+    <button class="next">下一步<span>&rarr;</span></button>
+  </div>
+  </section>
+  <!-- footer section -->
+  <footer class="footer cellphone">
+    <div class="container footer__wrapper">
+      <img src="" alt="" class="footer__wrapper__logo">
+      <div class="footer__wrapper__more-info"></div>
+      <div class="footer__wrapper__contact"></div>
+    </div>
+  </footer>
+  </div>
+  <!-- import webpack js -->
   <script src="dist/bundle.js"></script>
 </body>
 
