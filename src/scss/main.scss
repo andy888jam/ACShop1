@@ -140,6 +140,9 @@ body {
 .d-grid {
   display: grid;
 }
+.hidden {
+  visibility: hidden;
+}
 
 
 /* flex屬性設定 */
@@ -205,16 +208,14 @@ body {
   color: #999999;
 }
 
-
-
 /*手機版開始*/
 .container {
   width: 91%;
   margin: 0 auto;
 }
 
+/*header區域*/
 .header {
-  width: 100%;
   height: 56px;
   position: relative;
   display: flex;
@@ -244,14 +245,13 @@ body {
   }
 }
 
+/*main區域*/
 .main {
   display: flex;
   flex-direction: column;
-  border: solid blue 1px;
   &__left-content {
     display: flex;
     flex-direction: column;
-    border: solid green 1px;
     &__check {
       margin: 16px auto 24px 0;
     }
@@ -263,11 +263,7 @@ body {
   }
 }
 
-.footer {
-  background-color: $footer-bg;
-  display: none;
-}
-
+/*navbar區域*/
 .navbar-toggle {
   display: none;
 }
@@ -325,7 +321,7 @@ div.header__nav__item {
  justify-content: space-between;
 }
 
-/*stepper*/
+/*stepper區域*/
 @mixin getStepNumber($num) {
   @for $i from 1 through $num {
     &:nth-child(#{$i}) .step-circle::after {
@@ -350,6 +346,26 @@ div.header__nav__item {
   @include getStepNumber(3);
   text-align: center;
   position: relative;
+  &.active{
+    .step-circle{
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      background-color: black;
+      color: white;
+      border: solid 1px black;
+    }
+  }
+  &.checked {
+    .step-circle {
+      background-color: black;
+      color: white;
+      border: solid 1px black;
+      &::after {
+        content: "\2714";
+      }
+    }
+  }
 }
 
 .step-circle {
@@ -358,11 +374,6 @@ div.header__nav__item {
   border-radius: 50%;
   border: solid 1px $light-gray;
   position: relative;
-  &.active{
-  background-color: black;
-  color: white;
-  border: solid 1px black;
-  }
 }
 
 .connect-line {
@@ -375,10 +386,7 @@ div.header__nav__item {
   right: calc(50% + 48px);
 }
 
-.label-container {
-  display: none;
-}
-
+/*form區域*/
 .form-row {
   margin-bottom: 16px;
   > label {
@@ -390,11 +398,21 @@ div.header__nav__item {
   }
 }
 
+.form__info {
+  &__title {
+    width: 40%;
+  }
+  &__name {
+    width: 50%;
+  }
+}
+
+.form__payment__expire, .form__payment__cvc {
+  width: 45%;
+}
+
 input {
   @extend %input-style;
-  &:hover, &:focus {
-    //等等寫
-  }
   &[type="radio"]{
     -webkit-appearance: none; 
     border-radius: 50%;
@@ -436,6 +454,13 @@ select {
   @extend %input-style;
 }
 
+.form__movement-title-text {
+  margin: 24px 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/*購物車區域*/
 .item-picture {
   width: 100px;
   height: 100px;
@@ -450,10 +475,6 @@ select {
   display: flex;
   justify-content: space-between;
   }
-}
-
-.cellphone {
-  display: none;
 }
 
 .item-detail {
@@ -498,6 +519,7 @@ select {
   border-top: 1px solid #F0F0F5;
 }
 
+/*上一部下一步按鈕區域*/
 .next {
   width: 100%;
   height: 46px;
@@ -505,20 +527,104 @@ select {
   background-color: $button-pink;
   border-radius: 8px;
   color: white;
-  span {
-    display:inline-block;
-    margin-left: 13.5px;
+}
+
+.prev {
+  width: 30%;
+  height: 46px;
+  margin: 24px 0 40px;
+  color: black;
+}
+
+/*第二頁的短板按鈕class*/
+.next-shorter {
+  width: 50%;
+  height: 46px;
+  margin: 24px 0 40px;
+  background-color: $button-pink;
+  border-radius: 8px;
+  color: white;
+}
+
+.main__button {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*手機版的隱藏區域*/
+.cellphone {
+  display: none;
+}
+
+/*電腦版開始*/
+@media screen and (min-width: 375px) {
+  /*還原部分設定*/
+  .navbar-toggle-label {
+    display: none;
+  }
+  .header {
+    &__nav {
+      &__item {
+        opacity: 1;
+        all: unset;
+        margin-right: 10px;
+      }
+    all: unset;
+    width: 100%;
+    }
+  position: relative;   
+  }
+
+  .header__logo-wrapper {
+    position: absolute;
+    top: calc(50% - 12px );
+    left: calc(50% - 68px);
+  }
+  .header__nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  div.header__nav__item {
+    margin: 0;
+    margin-right: 2%;
+  }
+
+  /*主要版型調整*/
+  .main {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 30px;
+  }
+
+  .main__left-content {
+    grid-column: 1 / 7;
+  }
+
+  .main__cart {
+    grid-column: 7 / 13;
+  }
+
+  /*上一部下一步按鈕調整*/
+  .main__button {
+    width: 100%;
+    grid-column: 1 / 7;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .next {
+    grid-column: 5 / 7;
+  }
+
+  .next-shorter {
+    grid-column: 5 / 7;
+    width:100%;
+  } 
+
+  .prev {
+   grid-column: 1 / 3;
+   width: 40%;
   }
 }
 
-.form__movement-title-text {
-  margin: 24px 0;
-  font-size: 24px;
-  font-weight: 700;
-}
 
-
-@media screen and (min-width: 375px) {
-
-
-}
