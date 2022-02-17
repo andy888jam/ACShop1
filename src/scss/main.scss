@@ -316,9 +316,10 @@ div.header__nav__item {
  border: none;
  position: relative;
  display: flex;
- max-width: 150px;
  margin: 0 auto;
  justify-content: space-between;
+ padding-left: 20px;
+ padding-right: 20px;
 }
 
 /*stepper區域*/
@@ -376,16 +377,31 @@ div.header__nav__item {
   position: relative;
 }
 
-.connect-line {
-  display: block;
-  height: 1px;
-  width: 60px;
-  background-color: black;
-  position: absolute;
-  top: 16px;
-  right: calc(50% + 48px);
+.label-container {
+  display: none;
 }
 
+.step2 {
+  position: relative;
+  &::after {
+        content: "";
+        position: absolute;
+        width: 60px;
+        height: 1px;
+        background: black;
+        top: 16px;
+        right: calc(50% + 48px);
+  }
+  &::before {
+        content: "";
+        position: absolute;
+        width: 60px;
+        height: 1px;
+        background: black;
+        top: 16px;
+        left: calc(50% + 48px);
+  }
+}
 /*form區域*/
 .form-row {
   margin-bottom: 16px;
@@ -439,15 +455,20 @@ input {
   .transport-way {
     width: 100%;
     font-size: 14px;
-    margin-right: 186px;
   }
   .transport-price {
     font-size: 12px;
-    margin-bottom: 22px;
+    width: 20%;
   }
   span {
     font-size: 12px;
   }
+}
+.transport-detail {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 85%;
 }
 
 select {
@@ -473,7 +494,6 @@ select {
   padding: 18px 16px 0;
   &__items__item {
   display: flex;
-  justify-content: space-between;
   }
 }
 
@@ -481,10 +501,12 @@ select {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  flex: 1;
 }
 
 .numbers {
   display: flex;
+  justify-content: space-between;
   margin-bottom: 17px;
 }
 
@@ -517,6 +539,13 @@ select {
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid #F0F0F5;
+}
+
+.detail-left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 /*上一部下一步按鈕區域*/
@@ -557,7 +586,7 @@ select {
 }
 
 /*電腦版開始*/
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 376px) {
   /*還原部分設定*/
   .navbar-toggle-label {
     display: none;
@@ -567,7 +596,7 @@ select {
       &__item {
         opacity: 1;
         all: unset;
-        margin-right: 10px;
+        margin-right: 20px;
       }
     all: unset;
     width: 100%;
@@ -586,8 +615,15 @@ select {
   }
 
   div.header__nav__item {
+    padding: 0;
     margin: 0;
     margin-right: 2%;
+  }
+
+  .header__nav__item__search,
+  .header__nav__item__cart,
+  .header__nav__item__moon {
+      margin-left: 40px;
   }
 
   /*主要版型調整*/
@@ -595,6 +631,7 @@ select {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 30px;
+    position: relative;
   }
 
   .main__left-content {
@@ -603,7 +640,86 @@ select {
 
   .main__cart {
     grid-column: 7 / 13;
+    margin-top: 50px;
+    padding: 18px 16px 15px;
   }
+
+  .step {
+    display: flex;
+    flex-direction: row;
+  }
+  .label-container {
+     display: block;
+     margin-left: 1rem ;
+  }
+
+  .step2 {
+    position: relative;
+    &::after {
+          right: calc(100% + 46px);
+    }
+    &::before {
+          left: calc(100% + 46px);
+    }
+  }
+  // 表單
+  .form-row-1, .form-row-2, .form-row-3 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr) ;
+    column-gap: 1rem;
+  }
+
+  .form__info__title {
+    grid-column: 1 / 3;
+    width: 100%;
+  }
+  .form__info__name {
+    grid-column: 3 / 7;
+    width: 100%;
+  }
+  .form__info__telephone{
+    grid-column: 1 / 4;
+  }
+  .form__info__email{
+    grid-column: 4 / 7;
+  }
+  .form__info__city {
+    grid-column: 1 / 3;
+  }
+  .form__info__address {
+    grid-column: 3 / 7;
+  }
+
+  .form__transport-standard, .form__transport-express{
+    width: 80%;
+  }
+
+  .form__payment__holder, .form__payment__card-number {
+    width: 70%;
+  }
+
+  // 購物車調整
+  .item-detail {
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+    align-items: flex-start;
+    margin: 0 10px 0 20px
+  } 
+  .detail-left {
+    width: auto;
+    align-items: flex-start;
+  }
+  
+  .cellphone {
+    display: block;
+  }
+
+  .main__cart-title-text {
+    margin: 10px 0px 20px;
+    font-size: 18px;
+  }
+
 
   /*上一部下一步按鈕調整*/
   .main__button {
@@ -611,9 +727,12 @@ select {
     grid-column: 1 / 7;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+    position: absolute;
+    bottom: -5px;
   }
   .next {
     grid-column: 5 / 7;
+    margin: 0;
   }
 
   .next-shorter {
@@ -624,6 +743,7 @@ select {
   .prev {
    grid-column: 1 / 3;
    width: 40%;
+   margin: 0;
   }
 }
 

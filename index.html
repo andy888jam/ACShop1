@@ -20,6 +20,7 @@
         <div class="header__nav__items">
           <a href="#" class="header__nav__item">男裝</a>
           <a href="#" class="header__nav__item">女裝</a>
+          <a href="#" class="header__nav__item">最新消息</a>
           <a href="#" class="header__nav__item">客製消息</a>
           <a href="#" class="header__nav__item">聯絡我們</a>
         </div>
@@ -53,14 +54,12 @@
               <div class="step-circle"></div>
               <div class="label-container">寄送地址</div>
             </div>
-            <div class="step">
+            <div class="step step2">
               <div class="step-circle"></div>
-              <span class="connect-line"></span>
               <div class="label-container">運送方式</div>
             </div>
             <div class="step">
               <div class="step-circle"></div>
-              <span class="connect-line"></span>
               <div class="label-container">付款資訊</div>
             </div>
           </div>
@@ -75,7 +74,7 @@
             </div>
             <!-- form content -->
             <div class="form__info">
-              <div class="d-flex justify-content-between">
+              <div class="form-row-1 d-flex justify-content-between">
                 <div class="form-row form__info__title">
                   <label for="">稱謂</label>
                   <div class="select-wrapper">
@@ -89,25 +88,29 @@
                   <label for="">姓名</label><input id="name" type="text" placeholder="請輸入姓名" required>
                 </div>
               </div>
-              <div class="form-row form__info__telephone">
-                <label for="">電話</label><input id="telephone" type="text" placeholder="請輸入行動電話" required>
-              </div>
-              <div class="form-row form__info__email">
-                <label for="">Email</label><input id="email" type="text" placeholder="請輸入電子郵件" required>
-              </div>
-              <div class="form-row form__info__city">
-                <label for="">縣市</label>
-                <div class="select-wrapper">
-                  <select name="city" id="" required>
-                    <option value="" selected>請選擇縣市</option>
-                    <option value="taipei">台北</option>
-                    <option value="taichung">台中</option>
-                    <option value="kaohsiung">高雄</option>
-                  </select>
+              <div class="form-row-2">
+                <div class="form-row form__info__telephone">
+                  <label for="">電話</label><input id="telephone" type="text" placeholder="請輸入行動電話" required>
+                </div>
+                <div class="form-row form__info__email">
+                  <label for="">Email</label><input id="email" type="text" placeholder="請輸入電子郵件" required>
                 </div>
               </div>
-              <div class="form-row form__info__address">
-                <label for="">地址</label><input id="addess" type="text" placeholder="請輸入地址" required>
+              <div class="form-row-3">
+                <div class="form-row form__info__city">
+                  <label for="">縣市</label>
+                  <div class="select-wrapper">
+                    <select name="city" id="" required>
+                      <option value="" selected>請選擇縣市</option>
+                      <option value="taipei">台北</option>
+                      <option value="taichung">台中</option>
+                      <option value="kaohsiung">高雄</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row form__info__address">
+                  <label for="">地址</label><input id="addess" type="text" placeholder="請輸入地址" required>
+                </div>
               </div>
             </div>
           </div>
@@ -121,18 +124,19 @@
           <!-- form content -->
           <div class="form__transport">
             <div class="form__transport-standard">
-              <input name="transport" type="radio" value="standard" checked>
-              <label for="">
+              <input name="transport" type="radio" value="standard" checked class="standard">
+              <label for="" class="transport-detail">
                 <p class="transport-way">標準運送<br><span>約3~7個工作天</span></p>
+                <p class="transport-price">免費</p>
               </label>
-              <p class="transport-price">免費</p>
             </div>
             <div class="form__transport-express">
-              <input name="transport" type="radio" value="express">
-              <label for="">
+              <input name="transport" type="radio" value="express" class="express">
+              <label for="" class="transport-detail">
                 <p class="transport-way">DHL貨運<br><span>48小時內送達</span></p>
+                <p class="transport-price">$500</p>
               </label>
-              <p class="transport-price">$500</p>
+
             </div>
           </div>
         </div>
@@ -162,7 +166,7 @@
         </div>
       </div>
       <!-- cart part -->
-      <div class=" container main__cart">
+      <div class="main__cart">
         <div class="main__cart-title cellphone">
           <h5 class="main__cart-title-text">購物籃</h5>
         </div>
@@ -172,7 +176,7 @@
         </div>
         <div class="main__cart__delivery">
           <p>運費</p>
-          <p>免費</p>
+          <p class="isDeliver">免費</p>
         </div>
         <div class="main__cart__total">
           <p>小計</p>

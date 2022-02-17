@@ -8,7 +8,10 @@ const mainButton = document.querySelector('.main__button')
 const formParts = document.querySelectorAll('.part')
 const itemList = document.querySelector('.main__cart__items')
 const totalPrice = document.querySelector('.total-price')
+const transport = document.querySelector('.form__transport')
+const isDeliver = document.querySelector('.isDeliver')
 let step = 0
+let delivery = 0
 
 //商品
 const items = [
@@ -36,11 +39,13 @@ items.forEach(item => {
         <img src="${item.img}" alt="">
       </div>
       <div class="item-detail">
-        <p class="item-name">${item.name}</p>
-        <div class="numbers">
-          <button class="item-detail__numbers__minus">-</button>
-          <p class="item-detail__numbers__number">${item.quantity}</p>
-          <button class="item-detail__numbers__plus">+</button>
+        <div class="detail-left">
+          <p class="item-name">${item.name}</p>
+          <div class="numbers">
+            <button class="item-detail__numbers__minus">-</button>
+            <p class="item-detail__numbers__number">${item.quantity}</p>
+            <button class="item-detail__numbers__plus">+</button>
+          </div>
         </div>
         <div class="item-price">$${item.price}</div>
     </div>
@@ -102,13 +107,16 @@ function setItemNumber (e) {
             <img src="${item.img}" alt="">
           </div>
           <div class="item-detail">
-            <p class="item-name">${item.name}</p>
-            <div class="numbers">
-              <button class="item-detail__numbers__minus">-</button>
-              <p class="item-detail__numbers__number">${item.quantity + 1}</p>
-              <button class="item-detail__numbers__plus">+</button>
+            <div class="detail-left">
+              <p class="item-name">${item.name}</p>
+              <div class="numbers">
+                <button class="item-detail__numbers__minus">-</button>
+                <p class="item-detail__numbers__number">${item.quantity + 1}</p>
+                <button class="item-detail__numbers__plus">+</button>
+              </div>      
             </div>
             <div class="item-price">$${item.price}</div>
+          </div>
         </div>
       `
       item.quantity++
@@ -121,13 +129,16 @@ function setItemNumber (e) {
             <img src="${item.img}" alt="">
           </div>
           <div class="item-detail">
-            <p class="item-name">${item.name}</p>
-            <div class="numbers">
-              <button class="item-detail__numbers__minus">-</button>
-              <p class="item-detail__numbers__number">${item.quantity}</p>
-              <button class="item-detail__numbers__plus">+</button>
+            <div class="detail-left">
+              <p class="item-name">${item.name}</p>
+              <div class="numbers">
+                <button class="item-detail__numbers__minus">-</button>
+                <p class="item-detail__numbers__number">${item.quantity}</p>
+                <button class="item-detail__numbers__plus">+</button>
+              </div>
             </div>
             <div class="item-price">$${item.price}</div>
+          </div> 
         </div>`
       }
     })
@@ -144,13 +155,16 @@ function setItemNumber (e) {
                 <img src="${item.img}" alt="">
               </div>
               <div class="item-detail">
-                <p class="item-name">${item.name}</p>
-                <div class="numbers">
-                  <button class="item-detail__numbers__minus">-</button>
-                  <p class="item-detail__numbers__number">${item.quantity - 1}</p>
-                  <button class="item-detail__numbers__plus">+</button>
+                <div class="detail-left">
+                  <p class="item-name">${item.name}</p>
+                  <div class="numbers">
+                    <button class="item-detail__numbers__minus">-</button>
+                    <p class="item-detail__numbers__number">${item.quantity - 1}</p>
+                    <button class="item-detail__numbers__plus">+</button>
+                  </div>
                 </div>
                 <div class="item-price">$${item.price}</div>
+              </div>
             </div>
           `
           item.quantity--
@@ -163,13 +177,16 @@ function setItemNumber (e) {
                 <img src="${item.img}" alt="">
               </div>
               <div class="item-detail">
-                <p class="item-name">${item.name}</p>
-                <div class="numbers">
-                  <button class="item-detail__numbers__minus">-</button>
-                  <p class="item-detail__numbers__number">${item.quantity}</p>
-                  <button class="item-detail__numbers__plus">+</button>
-                </div>
+                <div class="detail-left">
+                  <p class="item-name">${item.name}</p>
+                  <div class="numbers">
+                    <button class="item-detail__numbers__minus">-</button>
+                    <p class="item-detail__numbers__number">${item.quantity}</p>
+                    <button class="item-detail__numbers__plus">+</button>
+                  </div>
+                </div> 
                 <div class="item-price">$${item.price}</div>
+              </div>
             </div>`
         }   
       })
@@ -178,14 +195,27 @@ function setItemNumber (e) {
 
 //總額計算函式
 function countTotal () {
-  let total = 0
+  let total = 0 + delivery
   items.forEach(item => {
     total += item.price * item.quantity
   })
   totalPrice.innerHTML = `$${total}`
 }
 
+function transportWay (e) {
+ if(e.target.matches('.standard')) {
+    isDeliver.innerText = '免費'
+    delivery = 0
+    countTotal()
+ } else if(e.target.matches('.express')) {
+     isDeliver.innerText = '$500'
+     delivery = 500
+    countTotal()
+ }
+}
+
 
 
 mainButton.addEventListener('click', handleStepClicked)
 itemList.addEventListener('click', setItemNumber)
+transport.addEventListener('click', transportWay)
